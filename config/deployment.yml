@@ -5,7 +5,7 @@ metadata:
   labels:
     app: python-example
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: python-example
@@ -21,9 +21,10 @@ spec:
     spec:
       containers:
       - name: python-example
-        image: <IMAGE>
+##        image: <IMAGE>
+          image: stefanprodan/podinfo
         ports:
-        - containerPort: 80
+        - containerPort: 9898
         resources:
           requests:
             cpu: 100m
@@ -40,6 +41,6 @@ spec:
     - name: http
       protocol: TCP
       port: 80
-      targetPort: 80
+      targetPort: 9898
   selector:
     app: python-example
